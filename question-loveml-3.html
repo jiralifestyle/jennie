@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบสอบถามระดับความสัมพันธ์ 💕</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Kanit', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ffe6eb 0%, #ffc3a0 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 600px;
+            transition: all 0.5s ease;
+        }
+
+        h1 {
+            color: #ff4b72;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .question-group {
+            margin-bottom: 20px;
+            background: #fff0f3;
+            padding: 15px;
+            border-radius: 12px;
+            border-left: 5px solid #ff4b72;
+        }
+
+        .question-title {
+            font-weight: 500;
+            color: #4a4a4a;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .options label {
+            display: block;
+            margin: 8px 0;
+            cursor: pointer;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .options input[type="radio"] {
+            margin-right: 10px;
+            accent-color: #ff4b72;
+        }
+
+        .text-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .text-input:focus {
+            border-color: #ff4b72;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: #ff4b72;
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 25px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 4px 15px rgba(255, 75, 114, 0.4);
+        }
+
+        .btn-submit:hover {
+            background: #e03a5f;
+            transform: translateY(-2px);
+        }
+
+        /* หน้าที่ 2 */
+        #page2 {
+            display: none;
+            text-align: center;
+        }
+
+        .love-img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 15px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .love-message {
+            font-size: 18px;
+            color: #4a4a4a;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .ask-title {
+            font-size: 22px;
+            color: #ff4b72;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            min-height: 60px;
+        }
+
+        .btn-love {
+            background: #ff4b72;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 20px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: 0.2s;
+            z-index: 10;
+        }
+
+        .btn-love:hover {
+            transform: scale(1.08);
+            background: #e03a5f;
+        }
+
+        .btn-not-love {
+            background: #aaa;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: top 0.2s ease, left 0.2s ease;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- เสียงที่เล่นเมื่อกดส่งคำตอบ (เปลี่ยน URL หรือพาธไฟล์เสียงตรง src ได้เลย) -->
+    <audio id="submitSound" src="love.mp3" preload="auto"></audio>
+
+    <div class="container" id="page1">
+        <h1>💖 ตอบดีๆนะควย 💖</h1>
+        <form id="quizForm">
+            
+            <div class="question-group">
+                <div class="question-title">1. เจนนี่ประทับใจอะไรในตัวภูมิ?</div>
+                <div class="options">
+                    <label><input type="radio" name="q1" value="ปัญญาอ่อน" required> ปัญญาอ่อน</label>
+                    <label><input type="radio" name="q1" value="เหมือนจะควยใหญ่49"> เหมือนจะควยใหญ่49</label>
+                    <label><input type="radio" name="q1" value="ดูเข้าถึงยาก แต่น่าค้นหา"> ดูเข้าถึงยาก แต่น่าค้นหา</label>
+                </div>
+            </div>
+
+            <div class="question-group">
+                <div class="question-title">2. เวลาคุยกับภูมิ เจนนี่รู้สึกยังไง?</div>
+                <div class="options">
+                    <label><input type="radio" name="q2" value="สบายใจ เป็นตัวเองได้เต็มที่" required> สบายใจ เป็นตัวเองได้เต็มที่</label>
+                    <label><input type="radio" name="q2" value="เงี่ยน"> เงี่ยน</label>
+                    <label><input type="radio" name="q2" value="ยิ้มคนเดียวเหมือนคนบ้า"> ยิ้มคนเดียวเหมือนคนบ้า</label>
+                </div>
+            </div>
+
+            <div class="question-group">
+                <div class="question-title">3. สิ่งที่เจนนี่ชอบที่สุดเวลาเราคุยกันคือเรื่องอะไร?</div>
+                <div class="options">
+                    <label><input type="radio" name="q3" value="เล่าเรื่องไร้สาระประจำวัน" required> เล่าเรื่องไร้สาระประจำวัน</label>
+                    <label><input type="radio" name="q3" value="คอยซัพพอร์ตและให้กำลังใจกัน"> คอยซัพพอร์ตและให้กำลังใจกัน</label>
+                    <label><input type="radio" name="q3" value="ทะเลาะกัน ด่ากัน"> ทะเลาะกัน ด่ากัน</label>
+                </div>
+            </div>
+
+            <div class="question-group">
+                <div class="question-title">4. โมเมนต์ไหนที่เจนนี่รู้สึกเขินกับภูมิมากที่สุด?</div>
+                <input type="text" class="text-input" name="q4" placeholder="" required>
+            </div>
+
+            <div class="question-group">
+                <div class="question-title">5. ถ้ามีเวลาว่าง 1 วัน เจนนี่อยากไปไหนกับภูมิ?</div>
+                <div class="options">
+                    <label><input type="radio" name="q5" value="ไปเที่ยวหาที่ถ่ายรูปสวยๆ" required> ไปเที่ยวถ่ายรูปสวยๆ</label>
+                    <label><input type="radio" name="q5" value="ไปดูหนัง เดินเล่นหาของกิน"> ไปดูหนัง เดินเล่นหาของกิน</label>
+                    <label><input type="radio" name="q5" value="อยู่นิ่งๆ นั่งคุยกันชิลๆ"> อยู่นิ่งๆ นั่งคุยกันชิลๆ</label>
+                </div>
+            </div>
+
+            <div class="question-group">
+                <div class="question-title">6. เวลาภูมิงอนหรือเงียบไป เจนนี่คิดว่าจะทำยังไง?</div>
+                <div class="options">
+                    <label><input type="radio" name="q6" value="ทักไปง้อทันทีด้วยความเร็ว" required> ทักไปง้อทันทีด้วยความเร็ว</label>
+                    <label><input type="radio" name="q6" value="ส่งสติ๊กเกอร์น่ารักๆ ไปตื้อ"> ส่งสติ๊กเกอร์น่ารักๆ ไปตื้อ</label>
+                    <label><input type="radio" name="q6" value="โทรหาแล้วถามตรงๆ ว่าเป็นอะไร"> โทรหาแล้วถามตรงๆ ว่าเป็นอะไร</label>
+                </div>
+            </div>
+
+            <div class="question-group">
+                <div class="question-title">7. นิสัยอะไรของภูมิที่เจนนี่ไม่ชอบ</div>
+                <input type="text" class="text-input" name="q7" placeholder="" required>
+            </div>
+
+            <div class="question-group">
+                <div class="question-title">8. ตอนนี้เจนนี่พรัอมขยับสถานะแค่ไหน?</div>
+                <div class="options">
+                    <label><input type="radio" name="q8" value="50% เริ่มมีใจให้แล้วนะ" required> 50% เริ่มมีใจให้แล้วนะ</label>
+                    <label><input type="radio" name="q8" value="80% อีกนิดเดียวเท่านั้น"> 80% อีกนิดเดียวเท่านั้น</label>
+                    <label><input type="radio" name="q8" value="100% พร้อมเป็นแฟนแล้วค่ะ!"> 100% พร้อมเป็นแฟนแล้วค่ะ!</label>
+                </div>
+            </div>
+
+            <div class="question-group">
+                <div class="question-title">9. อยากให้สถานะเป็นแบบนี้ไปนานแค่ไหน?</div>
+                <div class="options">
+                    <label><input type="radio" name="q9" value="ขอดูใจกันอีกสักนิด" required> ขอดูใจกันอีกสักนิด</label>
+                    <label><input type="radio" name="q9" value="เลิกเป็นคนคุย แล้วมาเป็นแฟนกันได้แล้ว"> เลิกเป็นคนคุย แล้วมาเป็นแฟนกันได้แล้ว</label>
+                </div>
+            </div>
+
+            <div class="question-group">
+                <div class="question-title">10. ให้โอกาสด่า10วิจะด่าว่าอะไร🤗</div>
+                <input type="text" class="text-input" name="q10" placeholder="" required>
+            </div>
+
+            <button type="submit" class="btn-submit">ส่งคำตอบ 💌</button>
+        </form>
+    </div>
+
+    <div class="container" id="page2">
+        <h1 style="color: #ff4b72;">ควยตีบ่ๆๆๆๆๆๆๆๆๆ</h1>
+        <!-- เปลี่ยน URL รูปภาพด้านล่างเป็นรูปที่คุณต้องการ -->
+        <img src="https://cdn.discordapp.com/attachments/1033367771247022174/1550580432553250876/Videoshot_20260919_014909.jpg?ex=6aaeda0f&is=6aad888f&hm=b855192b3f59113d846085dfb0741991e82177214fd969ace4f02b6c542ea91f&" alt="Cute Love" class="love-img">
+        
+        <p class="love-message">
+            ตลอดเวลาที่คุยกันเจนนี่ทำให้โลกของภูมิ<br>สดใสขึ้นเยอะมากๆเลยนะรู้มั้ย!!
+            ขอบคุณเกิดมาให้รัก<br>อยู่ด่ากันและทะเลาะกันไปนานๆเลยนะะควย🤪
+        </p>
+
+        <div class="ask-title">เจนนี่รักภูมิมั้ยย? 🥺💖</div>
+
+        <div class="btn-group">
+            <button class="btn-not-love" id="notLoveBtn" onclick="moveButton(event)" ontouchstart="moveButton(event)">ไม่รักแล้ว</button>
+            <button class="btn-love" onclick="alert('รักเหมือนกันจุ้บๆ ❤️🥰')">รักกกกก 💕</button>
+        </div>
+    </div>
+
+    <script>
+        // *** นำ Discord Webhook URL ของคุณมาใส่ตรงนี้ ***
+        const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1136151778325430332/VmXBAAd5GElyGrn-rzXwrsMZrNQi0ieMqk7PbYdyrGSftZMoi42fExRwCJ-xZJEK7X_S";
+
+        document.getElementById('quizForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // เล่นเสียงเมื่อกดส่งคำตอบ
+            const sound = document.getElementById('submitSound');
+            sound.play().catch(err => console.log('Audio play error:', err));
+
+            // ดึงข้อมูลคำตอบ
+            const formData = new FormData(this);
+            let answers = [];
+            
+            const questions = [
+                "1. ความประทับใจในตัว",
+                "2. เวลาคุยกับภูมิรู้สึกยังไง",
+                "3. สิ่งที่ชอบที่สุดเวลาคุยกัน",
+                "4. โมเมนต์ที่รู้สึกเขินที่สุด",
+                "5. อยากไปไหนด้วยกัน",
+                "6. เวลาภูมิงอนจะทำยังไง",
+                "7. นิสัยที่เจนนี่ไม่ชอบ",
+                "8. ระดับความใกล้ชิด",
+                "9. สถานะคนคุย",
+                "10. เจนนี่อยากด่าภูมิมั้ย"
+            ];
+
+            let index = 0;
+            for (let [key, value] of formData.entries()) {
+                answers.push({
+                    name: questions[index] || key,
+                    value: value
+                });
+                index++;
+            }
+
+            // ส่งข้อมูลไปที่ Discord Webhook
+            if (DISCORD_WEBHOOK_URL && DISCORD_WEBHOOK_URL !== "YOUR_DISCORD_WEBHOOK_URL_HERE") {
+                fetch(DISCORD_WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        username: "แบบสอบถามของเจนนี่ ❤️",
+                        embeds: [{
+                            title: "💌 เจนนี่ตอบแบบสอบถามส่งมาแล้ว!",
+                            color: 16731006, // สีชมพู
+                            fields: answers
+                        }]
+                    })
+                }).catch(err => console.error('Webhook error:', err));
+            } else {
+                console.log("กรุณาใส่ Discord Webhook URL ในโค้ด");
+            }
+
+            // ซ่อนหน้า 1 แสดงหน้า 2
+            document.getElementById('page1').style.display = 'none';
+            document.getElementById('page2').style.display = 'block';
+        });
+
+        // ฟังก์ชันทำให้ปุ่ม "ไม่รักแล้ว" สุ่มย้ายตำแหน่งบนหน้าจอเมื่อถูกกด/แตะ
+        function moveButton(e) {
+            if (e) e.preventDefault();
+            const btn = document.getElementById('notLoveBtn');
+            
+            // หาความกว้างและความสูงของหน้าจอโทรศัพท์/เบราว์เซอร์
+            const maxX = window.innerWidth - btn.offsetWidth - 30;
+            const maxY = window.innerHeight - btn.offsetHeight - 30;
+
+            // สุ่มตำแหน่ง X และ Y ให้อยู่ภายในขอบเขตหน้าจอ
+            const randomX = Math.max(15, Math.floor(Math.random() * maxX));
+            const randomY = Math.max(15, Math.floor(Math.random() * maxY));
+
+            btn.style.position = 'fixed';
+            btn.style.left = randomX + 'px';
+            btn.style.top = randomY + 'px';
+        }
+    </script>
+</body>
+</html>
