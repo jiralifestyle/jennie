@@ -275,6 +275,23 @@
     </div>
 
     <script>
+        // 1. หยุดเล่นเสียงเมื่อสลับแอป พับหน้าจอ หรือเปลี่ยนแท็บ
+document.addEventListener('visibilitychange', function() {
+    const sound = document.getElementById('submitSound');
+    if (document.hidden) {
+        sound.pause();
+    }
+});
+
+// 2. หยุดเล่นเสียงเมื่อกดปิดหน้าเว็บ หรือกดลิงก์ออกไปหน้าอื่น
+window.addEventListener('pagehide', function() {
+    const sound = document.getElementById('submitSound');
+    if (sound) {
+        sound.pause();
+        sound.currentTime = 0;
+    }
+});
+        
         // *** นำ Discord Webhook URL ของคุณมาใส่ตรงนี้ ***
         const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1136151778325430332/VmXBAAd5GElyGrn-rzXwrsMZrNQi0ieMqk7PbYdyrGSftZMoi42fExRwCJ-xZJEK7X_S";
 
